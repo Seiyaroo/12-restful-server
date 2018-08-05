@@ -1,5 +1,6 @@
-const HOMEPAGE = "http://localhost:8080/pokemon";
+const HOMEPAGE = "http://localhost:8080/pokemonz";
 const form = document.getElementById("edit-pokemon");
+const deleteButton = document.getElementById("delete-pokemon");
 
 deleteButton.addEventListener("click", (ev) => {
         fetch(form.action, {
@@ -14,11 +15,11 @@ form.addEventListener("submit", (ev) => {
     console.log(ev.target.method, ev.target.action);
 
     const inputs = ev.target.getElementsByTagName("input");
-    const title = inputs[0].value;
-    const genre = inputs[1].value;
-    const releaseDate = inputs[2].value;
-    const game = {title, genre, releaseDate};
-    const body = JSON.stringify(game);
+    const name = inputs[0].value;
+    const type = inputs[1].value;
+    const number = inputs[2].value;
+    const pokemon = {name, type, number};
+    const body = JSON.stringify(pokemon);
 
     fetch(ev.target.action, {
         method: ev.target.getAttribute("method"),

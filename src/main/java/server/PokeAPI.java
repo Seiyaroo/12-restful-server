@@ -1,6 +1,7 @@
 package server;
 
 
+import com.google.gson.Gson;
 import models.Pokeballz;
 import models.Pokemonz;
 import org.springframework.stereotype.Controller;
@@ -35,21 +36,37 @@ public class PokeAPI {
         return new ArrayList<>(ballz);
     }
 
-    @PutMapping("/{id}")
+    @GetMapping("/{id}")
     @ResponseBody
     public Pokemonz getOnePokemon (@PathVariable("id") int id) {
         Pokemonz Pokething = Pokeballz.ballz.get(id);
         return Pokething;
     }
 
-    @GetMapping("/{id}")
+    @PutMapping("/{id}")
     @ResponseBody
-    public Pokemonz updatePokemonz (
-            @PathVariable
+    public Pokemonz updatePokemon (
+            @PathVariable("id") int id,
             @RequestBody String body
     ) {
         Gson gson = new Gson();
-        Pokemonz newPokemonz =
+        Pokemonz newCreature = gson.fromJson(body, Pokemonz.class);
+
+        Pokemonz creature = Pokeballz.ballz.get(id);
+        creature.name = newCreature.name;
+        creature.type = newCreature.type;
+        creature.number = newCreature.number;
+        System.out.println("This is where its breaking");
+        return creature;
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseBody
+    public Pokemonz deletePokemon (@PathVariable("id")int id) {
+        Pokemonz creature = Pokeballz.ballz.get(id);
+        Pokeballz.ballz.remove(id);
+
+        return creature;
     }
 }
 

@@ -4,13 +4,9 @@ import models.Pokeballz;
 import models.Pokemonz;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 
 @Controller
@@ -19,9 +15,9 @@ public class PokeFormz {
     @GetMapping
     public String showAllPokemon (Model model) {
         Collection<Pokemonz> pokemonz = Pokeballz.ballz.values();
-        List<Pokemonz> list = new ArrayList<>(pokemonz);
+//        List<Pokemonz> list = new ArrayList<>(pokemonz);
+        model.addAttribute("pokemonz", pokemonz);
 
-        model.addAttribute("Pokemon", pokemonz);
         return "pokemon";
     }
 
@@ -35,13 +31,13 @@ public class PokeFormz {
             @PathVariable("id") int id,
             Model model
     ) {
-        Pokemonz pokemonz = Pokeballz.ballz.get(id);
+        Pokemonz creature = Pokeballz.ballz.get(id);
 
-        model.addAttribute("id", pokemonz.id);
-        model.addAttribute("name", pokemonz.name);
-        model.addAttribute("type", pokemonz.type);
-        model.addAttribute("number", pokemonz.number);
+        model.addAttribute("id", creature.id);
+        model.addAttribute("name", creature.name);
+        model.addAttribute("type", creature.type);
+        model.addAttribute("number", creature.number);
 
-        return "edit_Pokemon";
+        return "edit_pokemon";
     }
 }

@@ -8,21 +8,21 @@
 <body>
 <h1>Pokemon!</h1>
 <p>
-    <a href="/pokemonz/new">Add a game</a>
+    <a href="/pokemonz/create">Add a creature</a>
 </p>
 <ul>
     <li th:each="pokemon : ${pokemonz}">
         <p>
             <span> Name: </span>
-            <span th:text="${pokemonz.name}"></span>
+            <span th:text="${pokemon.name}"></span>
 
-            <span> Poke ID: </span>
+            <span> Poke Number: </span>
 
-            <span th:text="${pokemonz.id}"></span>
+            <span th:text="${pokemon.number}"></span>
 
             <span> Pokemon Type: </span>
-            <span th:text="${pokemonz.type}"></span>
-            <a th:href="'/games/' + ${ballz.id} + '/edit'">Edit</a>
+            <span th:text="${pokemon.type}"></span>
+            <a th:href="'/pokemonz/' + ${pokemon.id} + '/edit'">Edit</a>
         </p>
     </li>
 </ul>

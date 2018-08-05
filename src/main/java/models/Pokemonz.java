@@ -12,6 +12,6 @@ public class Pokemonz {
         this.id = ID++;
         this.name = name;
         this.type = type;
-        this.type = number;
+        this.number = number;
     }
 }
