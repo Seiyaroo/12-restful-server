@@ -24,7 +24,7 @@ public class PokeAPI {
     ) {
         Pokemonz pokemonz = new Pokemonz(name, type, number);
         Pokeballz.ballz.put(pokemonz.id, pokemonz);
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("redirect:/pokemonz");
 
     }
 
@@ -42,7 +42,15 @@ public class PokeAPI {
         return Pokething;
     }
 
-
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Pokemonz updatePokemonz (
+            @PathVariable
+            @RequestBody String body
+    ) {
+        Gson gson = new Gson();
+        Pokemonz newPokemonz =
+    }
 }
 
 

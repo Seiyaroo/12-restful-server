@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Pokemonz!</title>
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+<h1>Pokemon!</h1>
+<p>
+    <a href="/pokemonz/new">Add a game</a>
+</p>
+<ul>
+    <li th:each="pokemon : ${pokemonz}">
+        <p>
+            <span> Name: </span>
+            <span th:text="${pokemonz.name}"></span>
+
+            <span> Poke ID: </span>
+
+            <span th:text="${pokemonz.id}"></span>
+
+            <span> Pokemon Type: </span>
+            <span th:text="${pokemonz.type}"></span>
+            <a th:href="'/games/' + ${ballz.id} + '/edit'">Edit</a>
+        </p>
+    </li>
+</ul>
+</body>
+</html>

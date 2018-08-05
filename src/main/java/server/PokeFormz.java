@@ -42,6 +42,6 @@ public class PokeFormz {
         model.addAttribute("type", pokemonz.type);
         model.addAttribute("number", pokemonz.number);
 
-        return PokeFormz;
+        return "edit_Pokemon";
     }
 }
