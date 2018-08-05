@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Edit a Pokemon!</title>
+        <link rel="stylesheet" href="/css/main.css" />
+    </head>
+    <body>
+        <h1>Edit Pokemon!</h1>
+        <form id="edit-pokemon" th:action="'/api/pokemonz/' + ${id}" method="PUT">
+            <input type="text" name="name" th:value="${name}" />
+            <input type="text" name="type" th:value="${type}" />
+            <input type="text" name="number" th:value="${number}" />
+            <button id="delete-pokemon">Delete</button>
+            <input type="submit" value="Save" />
+        </form>
+
+        <script src="/js/form.js"></script>
+    </body>
+</html>
